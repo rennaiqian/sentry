@@ -615,6 +615,12 @@ function routes() {
           import(/*webpackChunkName:"AcceptProjectTransfer"*/ 'app/views/acceptProjectTransfer')}
         component={errorHandler(LazyLoad)}
       />
+      <Route
+        path="/integration/:installationId"
+        componentPromise={() =>
+          import(/*webpackChunkName:"AcceptProjectTransfer"*/ 'app/views/integrationInstallation')}
+        component={errorHandler(LazyLoad)}
+      />
       <Route path="/account/" component={errorHandler(AccountLayout)}>
         <Route path="authorizations/" component={errorHandler(AccountAuthorizations)} />
       </Route>
