@@ -94,7 +94,12 @@ class IssueSyncElement extends React.Component {
       <IssueSyncListElementContainer>
         <div>
           {this.getIcon()}
-          {this.getLink()}
+          <IntegrationLink
+            href={this.props.externalIssueLink}
+            onClick={this.props.openModal}
+          >
+            {this.getText()}
+          </IntegrationLink>
         </div>
         <IconClose
           src="icon-close"
