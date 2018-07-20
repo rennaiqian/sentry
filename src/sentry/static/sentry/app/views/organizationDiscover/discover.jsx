@@ -177,6 +177,8 @@ export default class OrganizationDiscover extends React.Component {
       label: name,
     }));
 
+    const renderChart = !!query.aggregations.length;
+
     return (
       <Discover className="organization-home">
         <Header
