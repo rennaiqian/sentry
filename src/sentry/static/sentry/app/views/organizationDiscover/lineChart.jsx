@@ -20,8 +20,7 @@ export default class lineChart extends React.Component {
     return LineSeries({
       name: key,
       type: 'line',
-      data: value.count,
-      // data: value.map(entry => entry.count),
+      data: value.map(entry => entry.count),
       color: theme.charts.colors[idx],
     });
   };
