@@ -33,7 +33,7 @@ class IssueSyncElement extends React.Component {
       case 'github_enterprise':
         return 'GHE-';
       default:
-        return this.getHumanName() + '-';
+        return this.getPrettyName() + '-';
     }
   }
 
@@ -73,9 +73,8 @@ class IssueSyncElement extends React.Component {
           {this.getText()}
         </IntegrationLink>
       );
-    } else if (this.props.openModal) {
-      return <IntegrationLink onClick={this.openModal}>{this.getText()}</IntegrationLink>;
     }
+    return <IntegrationLink onClick={this.openModal}>{this.getText()}</IntegrationLink>;
   }
 
   getText() {
@@ -85,7 +84,7 @@ class IssueSyncElement extends React.Component {
     if (this.props.externalIssueId) {
       return `${this.getPrefix()}${this.props.externalIssueId}`;
     } else {
-      return `Link ${capitalize(this.props.integrationType)} Issue`;
+      return `Link ${this.getPrettyName()} Issue`;
     }
   }
 
