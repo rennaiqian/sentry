@@ -33,7 +33,15 @@ describe('get query URL string from query', function() {
   });
 });
 
-const sampleQueryData = [
+
+
+  // getLineSeries = (data, groupBy) => {
+  //   return _.groupBy(data, dataPoint => {
+  //     return dataPoint[groupBy];
+  //   });
+  // };
+
+const queryData = [
   {
     'exception_stacks.type': 'ZeroDivisionError',
     platform: 'python',
@@ -50,7 +58,7 @@ const sampleQueryData = [
     'exception_stacks.type': 'Exception',
     platform: 'php',
     count: 6,
-    time: 1531094400,
+    time: 1531094400
   },
   {
     'exception_stacks.type': 'SnubaError',
@@ -74,7 +82,7 @@ const sampleQueryData = [
     'exception_stacks.type': 'Exception',
     platform: 'php',
     count: 8,
-    time: 1532070000,
+    time: 1532070000
   },
   {
     'exception_stacks.type': 'SnubaError',
@@ -84,19 +92,18 @@ const sampleQueryData = [
   },
 ];
 
-const fields = ['platform', 'exception_stacks.type'];
+const fields = ['platform', 'exception_stacks.type']
 
 function getDataForChart(queryData, groupbyFields) {
-  //TODO: import function from chart.jsx once finalized for agg.
   const output = {};
   queryData.forEach(data => {
-    const key = groupbyFields.map(field => data[field]).join(',');
+    const key = groupbyFields.map(field => data[field]).join(',')
     if (key in output) {
-      output[key].count.push(data.count);
+      output[key].count.push(data.count)
     } else {
-      output[key] = {count: [data.count]};
+      output[key] = {count: [data.count]}
     }
-  });
+  })
 
   return output;
 }
@@ -106,8 +113,8 @@ describe('getDataForChart()', function() {
     'python,ZeroDivisionError': {count: [6, 20]},
     'python,SnubaError': {count: [14, 30]},
     'javascript,Type Error': {count: [6, 5]},
-    'php,Exception': {count: [6, 8]},
+    'php,Exception': {count: [6,8]},
   };
 
-  expect(getDataForChart(sampleQueryData, fields)).toEqual(expectedData);
+  expect(getDataForChart(queryData, fields)).toEqual(expectedData);
 });

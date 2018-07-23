@@ -20,8 +20,15 @@ export default class lineChart extends React.Component {
     return LineSeries({
       name: key,
       type: 'line',
-      data: value.map(entry => entry.count),
+      data: value.count,
+      // data: value.map(entry => entry.count),
       color: theme.charts.colors[idx],
+    });
+  };
+
+  getLineSeries = (data, groupBy) => {
+    return _.groupBy(data, dataPoint => {
+      return dataPoint[groupBy];
     });
   };
 
@@ -35,10 +42,12 @@ export default class lineChart extends React.Component {
       ...new Set(data.data.map(entry => moment(entry.time * 1000).format('MM-DD'))),
     ];
 
-    console.log('dates', dates);
-    console.log('received chartdata', chartData);
-    console.log('series', series);
-    console.log('data: ', data);
+    // if (!chartData.length) return null;
+    console.log("dates", dates);
+    console.log("received chartdata", chartData);
+    console.log("series", series);
+    console.log("data: ", data);
+
 
     if (
       !series.length ||
