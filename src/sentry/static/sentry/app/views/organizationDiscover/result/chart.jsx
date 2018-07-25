@@ -28,10 +28,9 @@ export default class Result extends React.Component {
     const {fields} = this.props.query;
     const {data} = this.props.data;
 
-
-    console.log("data is: ", data);
-    console.log("parsed data is: ", this.getDataForChart(data, fields));
-    console.log("Fields:", fields);
+    console.log('data is: ', data);
+    console.log('parsed data is: ', this.getDataForChart(data, fields));
+    console.log('Fields:', fields);
 
     const chartData = this.getDataForChart(data, fields);
 
