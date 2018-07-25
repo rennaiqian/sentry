@@ -6,9 +6,6 @@ import {Box} from 'grid-emotion';
 
 import theme from 'app/utils/theme';
 import AutoSelectText from 'app/components/autoSelectText';
-import LineChart from '../lineChart';
-const {data} = require('./transactionData.js');
-const chartData = data;
 
 import {getDisplayValue} from './utils';
 

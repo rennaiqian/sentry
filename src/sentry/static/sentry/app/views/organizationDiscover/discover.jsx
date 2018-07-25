@@ -178,10 +178,8 @@ export default class OrganizationDiscover extends React.Component {
       label: name,
     }));
 
-    const renderChart = !!query.aggregations.length;
-
-    console.log("query is...", query);
-    console.log("Chart Data", chartData);
+    console.log('query is...', query);
+    console.log('Chart Data', chartData);
     return (
       <Discover className="organization-home">
         <Header
